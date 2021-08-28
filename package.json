@@ -1,5 +1,5 @@
 {
-    "name": "svelte-dnd-action",
+    "name": "@spezifisch/svelte-dnd-action",
     "svelte": "src/index.js",
     "module": "dist/index.mjs",
     "main": "dist/index.js",
@@ -43,14 +43,14 @@
     "version": "0.9.9",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/isaacHagoel/svelte-dnd-action.git"
+        "url": "https://github.com/spezifisch/svelte-dnd-action"
     },
     "author": "Isaac Hagoel",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/isaacHagoel/svelte-dnd-action/issues"
+        "url": "https://github.com/spezifisch/svelte-dnd-action/issues"
     },
-    "homepage": "https://github.com/isaacHagoel/svelte-dnd-action#readme",
+    "homepage": "https://github.com/spezifisch/svelte-dnd-action#readme",
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged"
