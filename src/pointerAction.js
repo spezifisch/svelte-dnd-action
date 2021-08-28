@@ -85,12 +85,22 @@ function unregisterDropZone(dropZoneEl, type) {
 /* functions to manage observing the dragged element and trigger custom drag-events */
 function watchDraggedElement() {
     printDebug(() => "watching dragged element");
-    armWindowScroller();
     const dropZones = typeToDropZones.get(draggedElType);
+    let first = true
     for (const dz of dropZones) {
+        if (first) {
+            // get scrollContainer for first dropzone
+            const scrollContainer = dzToConfig.get(dz).scrollContainer
+
+            armWindowScroller(scrollContainer);
+            first = false
+        }
         dz.addEventListener(DRAGGED_ENTERED_EVENT_NAME, handleDraggedEntered);
         dz.addEventListener(DRAGGED_LEFT_EVENT_NAME, handleDraggedLeft);
         dz.addEventListener(DRAGGED_OVER_INDEX_EVENT_NAME, handleDraggedIsOverIndex);
+    }
+    if (first) {
+        armWindowScroller();
     }
     window.addEventListener(DRAGGED_LEFT_DOCUMENT_EVENT_NAME, handleDrop);
     // it is important that we don't have an interval that is faster than the flip duration because it can cause elements to jump bach and forth
@@ -311,7 +321,8 @@ export function dndzone(node, options) {
         dropTargetStyle: DEFAULT_DROP_TARGET_STYLE,
         dropTargetClasses: [],
         transformDraggedElement: () => {},
-        centreDraggedOnCursor: false
+        centreDraggedOnCursor: false,
+        scrollContainer: undefined
     };
     printDebug(() => [`dndzone good to go options: ${toString(options)}, config: ${toString(config)}`, {node}]);
     let elToIdx = new Map();
@@ -434,7 +445,8 @@ export function dndzone(node, options) {
         dropTargetStyle = DEFAULT_DROP_TARGET_STYLE,
         dropTargetClasses = [],
         transformDraggedElement = () => {},
-        centreDraggedOnCursor = false
+        centreDraggedOnCursor = false,
+        scrollContainer = undefined
     }) {
         config.dropAnimationDurationMs = dropAnimationDurationMs;
         if (config.type && newType !== config.type) {
@@ -448,6 +460,7 @@ export function dndzone(node, options) {
         config.morphDisabled = morphDisabled;
         config.transformDraggedElement = transformDraggedElement;
         config.centreDraggedOnCursor = centreDraggedOnCursor;
+        config.scrollContainer = scrollContainer;
 
         // realtime update for dropTargetStyle
         if (

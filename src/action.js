@@ -19,6 +19,7 @@ import {toString} from "./helpers/util";
  * @property {object} [dropTargetStyle]
  * @property {string[]} [dropTargetClasses]
  * @property {function} [transformDraggedElement]
+ * @property {object} [scrollContainer]
  * @param {HTMLElement} node - the element to enhance
  * @param {Options} options
  * @return {{update: function, destroy: function}}
@@ -54,6 +55,7 @@ function validateOptions(options) {
         transformDraggedElement,
         autoAriaDisabled,
         centreDraggedOnCursor,
+        scrollContainer,
         ...rest
     } = options;
     /*eslint-enable*/

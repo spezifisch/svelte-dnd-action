@@ -16,21 +16,21 @@ export function updateMousePosition(e) {
 const {scrollIfNeeded, resetScrolling} = makeScroller();
 let next;
 
-function loop() {
+function loop(scrollContainer) {
     if (mousePosition) {
-        scrollIfNeeded(mousePosition, document.documentElement);
+        scrollIfNeeded(mousePosition, scrollContainer ?? document.documentElement);
     }
-    next = window.setTimeout(loop, INTERVAL_MS);
+    next = window.setTimeout(() => { loop(scrollContainer) }, INTERVAL_MS);
 }
 
 /**
  * will start watching the mouse pointer and scroll the window if it goes next to the edges
  */
-export function armWindowScroller() {
+export function armWindowScroller(scrollContainer) {
     printDebug(() => "arming window scroller");
     window.addEventListener("mousemove", updateMousePosition);
     window.addEventListener("touchmove", updateMousePosition);
-    loop();
+    loop(scrollContainer);
 }
 
 /**
