@@ -1,5 +1,6 @@
 import {SHADOW_ELEMENT_ATTRIBUTE_NAME, DRAGGED_ELEMENT_ID} from "../constants";
 import {findCenter} from "./intersection";
+import { svelteNodeClone } from "./svelteNodeClone";
 
 const TRANSITION_DURATION_SECONDS = 0.2;
 
@@ -19,7 +20,7 @@ function trs(property) {
  */
 export function createDraggedElementFrom(originalElement, positionCenterOnXY) {
     const rect = originalElement.getBoundingClientRect();
-    const draggedEl = originalElement.cloneNode(true);
+    const draggedEl = svelteNodeClone(originalElement);
     copyStylesFromTo(originalElement, draggedEl);
     draggedEl.id = DRAGGED_ELEMENT_ID;
     draggedEl.style.position = "fixed";
@@ -135,7 +136,7 @@ export function styleDraggable(draggableEl, dragDisabled) {
  * Hides the provided element so that it can stay in the dom without interrupting
  * @param {HTMLElement} dragTarget
  */
-export function hideOriginalDragTarget(dragTarget) {
+export function hideElement(dragTarget) {
     dragTarget.style.display = "none";
     dragTarget.style.position = "fixed";
     dragTarget.style.zIndex = "-5";

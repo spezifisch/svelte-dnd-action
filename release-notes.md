@@ -1,5 +1,40 @@
 ## Svelte Dnd Action - Release Notes
 
+### [0.9.18](https://github.com/isaacHagoel/svelte-dnd-action/pull/365)
+fix: if a drop zone is removed mid-drag it was causing the lib to throw errors
+
+### [0.9.17](https://github.com/isaacHagoel/svelte-dnd-action/pull/320)
+
+fix: dropdowns (select elements) will now maintain their value during drag
+
+### [0.9.16](https://github.com/isaacHagoel/svelte-dnd-action/pull/356)
+
+fixed a bug that made dropTargetClasses and dropTarget styles work incorrectly when applied to nested zones
+
+### [0.9.15](https://github.com/isaacHagoel/svelte-dnd-action/pull/350)
+
+made the aria support more friendly for multi-page apps (ex: SvelteKit) by having the lib lazy init and clean up the aria divs when the last instance is removed
+
+### [0.9.14](https://github.com/isaacHagoel/svelte-dnd-action/pull/340/)
+
+fixed an issue with items sometimes not making way for the dragged element after autoscroll
+
+### [0.9.13](https://github.com/isaacHagoel/svelte-dnd-action/pull/331/)
+
+fixed the typescript type for dropTargetClasses
+
+### [0.9.12](https://github.com/isaacHagoel/svelte-dnd-action/pull/328/)
+
+added a link example for a basic implementation of multi-drag in the README
+
+### [0.9.11](https://github.com/isaacHagoel/svelte-dnd-action/pull/315/)
+
+added a new option, `zoneTabIndex`, that allows to set custom tabindex in the list container.
+
+### 0.9.10
+
+Please do not use. It was deployed with unintended changes
+
 ### [0.9.9](https://github.com/isaacHagoel/svelte-dnd-action/pull/301)
 
 bugfix - works properly when under shadow dom

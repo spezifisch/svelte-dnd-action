@@ -111,6 +111,7 @@ An options-object with the following attributes:
 | `dragDisabled` | Boolean | No | `false` | Setting it to true will make it impossible to drag elements out of the dnd-zone. You can change it at any time, and the zone will adjust on the fly |
 | `morphDisabled` | Boolean | No | `false` | By default, when dragging over a zone, the dragged element is morphed to look like it would if dropped. You can prevent it by setting this option. |
 | `dropFromOthersDisabled` | Boolean | No | `false` | Setting it to true will make it impossible to drop elements from other dnd-zones of the same type. Can be useful if you want to limit the max number of items for example. You can change it at any time, and the zone will adjust on the fly |
+| `zoneTabIndex` | Number | No | `0` | Allow user to set custom tabindex to the list container when not dragging. Can be useful if you want to make the screen reader to skip the list container. You can change it at any time. |
 | `dropTargetStyle` | Object&lt;String&gt; | No | `{outline: 'rgba(255, 255, 102, 0.7) solid 2px'}` | An object of styles to apply to the dnd-zone when items can be dragged into it. Note: the styles override any inline styles applied to the dnd-zone. When the styles are removed, any original inline styles will be lost |
 | `dropTargetClasses`| Array&lt;String&gt; | No | `[]` | A list of classes to apply to the dnd-zone when items can be dragged into it. Note: make sure the classes you use are global. |
 | `transformDraggedElement` | Function | No | `() => {}` | A function that is invoked when the draggable element enters the dnd-zone or hover overs a new index in the current dnd-zone. <br />Signature:<br />function(element, data, index) {}<br />**element**: The dragged element. <br />**data**: The data of the item from the items array.<br />**index**: The index the dragged element will become in the new dnd-zone.<br /><br />This allows you to override properties on the dragged element, such as innerHTML to change how it displays. If what you are after is altering styles, do it to the children, not to the dragged element itself |
@@ -188,6 +189,7 @@ If you want to implement your own custom screen-reader alerts, roles and instruc
 -   [Generic List Component (Alternative to Slots)](https://svelte.dev/repl/028674733f67409c94bd52995d5906f1?version=3.31.0)
 -   [Maitaining internal scroll poisition on scrollable dragabble](https://svelte.dev/repl/eb2f5988bd2f46488810606c1fb13392?version=3.29.4)
 -   [Scrabble like board using over a 100 single slot dnd-zones](https://svelte.dev/repl/ed2e138417094281be6db1aef23d7859?version=3.37.0)
+-   [Select multiple elements to drag (multi-drag) with mouse or keyboard](https://svelte.dev/repl/c4eb917bb8df42c4b17402a7dda54856?version=3.24.1)
 
 -   [Fade in/out but without using Svelte transitions](https://svelte.dev/repl/3f1e68203ef140969a8240eba3475a8d?version=3.24.1)
 -   [Nested fade in/out without using Svelte transitions](https://svelte.dev/repl/49b09aedfe0543b4bc8f575c8dbf9a53?version=3.24.1)
@@ -204,7 +206,7 @@ If you want to implement your own custom screen-reader alerts, roles and instruc
 -   The host component must refresh the items that are passed in to the custom-action when receiving consider and finalize events (do not omit any handler).
 -   FYI, the library assumes it is okay to add a temporary item to the items list in any of the dnd-zones while an element is dragged around.
 -   If you want dragged items to be able to scroll the container, make sure the scroll-container (the element with overflow:scroll) is the dnd-zone (the element decorated with this custom action)
--   Svelte's built-in transitions might not play nice with this library. Luckily, it is an easy issue to work around. There are examples below.
+-   Svelte's built-in transitions might not play nice with this library. Luckily, it is an easy issue to work around. There are examples above.
 
 ### Overriding the item id key name
 

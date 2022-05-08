@@ -1,5 +1,6 @@
 import {makeScroller} from "./scroller";
 import {printDebug} from "../constants";
+import {resetIndexesCache} from "./listUtil";
 
 const INTERVAL_MS = 300;
 let mousePosition;
@@ -18,7 +19,8 @@ let next;
 
 function loop(scrollContainer) {
     if (mousePosition) {
-        scrollIfNeeded(mousePosition, scrollContainer ?? document.documentElement);
+        const scrolled = scrollIfNeeded(mousePosition, scrollContainer ?? document.documentElement);
+        if (scrolled) resetIndexesCache();
     }
     next = window.setTimeout(() => { loop(scrollContainer) }, INTERVAL_MS);
 }
