@@ -1,4 +1,12 @@
-# SVELTE DND ACTION [![Known Vulnerabilities](https://snyk.io/test/github/isaacHagoel/svelte-dnd-action/badge.svg?targetFile=package.json)](https://snyk.io/test/github/isaacHagoel/svelte-dnd-action?targetFile=package.json)
+# SVELTE DND ACTION
+
+## Fork
+
+This fork adds:
+
+-   `scrollContainer` parameter to specify which element gets the scrollbar (useful for nested dnd containers)
+
+## Original
 
 This is a feature-complete implementation of drag and drop for Svelte using a custom action. It supports almost every imaginable drag and drop use-case, any input device and is fully accessible. <br />
 It requires very minimal configuration, while offering a rich set of primitives that allow overriding basically any of its default behaviours (using the handler functions). <br /><br />
